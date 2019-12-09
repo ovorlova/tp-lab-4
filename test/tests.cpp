@@ -1,104 +1,36 @@
 #include "gtest/gtest.h"
-#include "task1.h"
-#include "task2.h"
-#include "task3.h"
-#include "task4.h"
-#include "task5.h"
+#include "auto.h"
 
-// task1
-TEST(lab1,task1_1)
+TEST(auto, is_on)
 {
-    unsigned long res=findValue(1,20);
-    EXPECT_EQ(232792560,res);
+	Automata c;
+	std::string res = c.getState();
+	EXPECT_EQ("Coffee and Co. is on", res);
 }
-TEST(lab1,task1_2)
+TEST(auto, is_off)
 {
-    unsigned long res=findValue(1,10);
-    EXPECT_EQ(2520,res);
+	Automata c;
+	c.off();
+	std::string res = c.getState();
+	EXPECT_EQ("Coffee and Co. is off", res);
 }
-
-// task2
-TEST(lab1,task2_1)
+TEST(auto, correct_n)
 {
-   EXPECT_EQ(true,checkPrime(2));
+	Automata HSE("HSE", { Drink{"Americano", 50}, Drink{"Espresso", 60}, Drink{"Latte", 80}, Drink{"Hot chocolate", 60}, Drink{"Tea", 30}, Drink{"Water", 10} });
+	std::string res = HSE.coin(100);
+	res = HSE.choice(2);
+	EXPECT_EQ("Espresso is cooking...\nEnjoy your drink!", res);
 }
-TEST(lab1,task2_2)
+TEST(auto, incorrect_n)
 {
-   EXPECT_EQ(true,checkPrime(3));
+	Automata HSE("HSE", { Drink{"Americano", 50}, Drink{"Espresso", 60}, Drink{"Latte", 80}, Drink{"Hot chocolate", 60}, Drink{"Tea", 30}, Drink{"Water", 10} });
+	std::string res = HSE.coin(100);
+	res = HSE.choice(10);
+	EXPECT_EQ("Error!", res);
 }
-TEST(lab1,task2_3)
+TEST(auto, menu)
 {
-   EXPECT_EQ(false,checkPrime(12));
-}
-TEST(lab1,task2_4)
-{
-   unsigned long long res=nPrime(6);
-   EXPECT_EQ(13,res);
-}
-TEST(lab1,task2_5)
-{
-   unsigned long long res=nPrime(500);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_6)
-{
-   unsigned long long res=nextPrime(1031);
-   EXPECT_EQ(1033,res);
-}
-TEST(lab1,task2_7)
-{
-   unsigned long long res=nextPrime(3559);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_8)
-{
-   unsigned long long res=nextPrime(2);
-   EXPECT_EQ(3,res);
-}
-
-// task3
-TEST(lab1,task3_1)
-{
-   unsigned long long res=sumPrime(2000000);
-   unsigned long long expected=142913828922;
-   EXPECT_EQ(expected,res);
-}
-TEST(lab1,task3_2)
-{
-   unsigned long long res=sumPrime(10);
-   unsigned long long expected=17;
-   EXPECT_EQ(expected,res);
-}
-
-// task4
-TEST(lab1,task4_1)
-{
-   char *x="123456789";
-   char *y="000000001";
-   char *expected="123456790";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
-}
-TEST(lab1,task4_2)
-{
-   char *x="99999999999999999999";
-   char *y="1";
-   char *expected="100000000000000000000";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
-}
-
-//task5
-TEST(lab1,task5)
-{
-   char *buf="123,456,789";
-   int N=0;
-   char **result=nullptr;
-   split(&result, &N, buf, ',');
-   
-   EXPECT_EQ(3,N);
-   EXPECT_NE(nullptr,result);
-   EXPECT_STREQ("123",result[0]);
-   EXPECT_STREQ("456",result[1]);
-   EXPECT_STREQ("789",result[2]);
+	Automata c("CheckMachine", { Drink{"Coffee", 10} });
+	std::string res = c.getMenu();
+	EXPECT_EQ("CheckMachine:\n1. Coffee: 10", res);
 }
