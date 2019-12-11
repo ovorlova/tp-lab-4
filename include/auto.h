@@ -23,8 +23,8 @@ public:
 	std::string on();
 	std::string off();
 	std::string coin(int);
-	std::string getMenu();
-	std::string getState();
+	std::string printMenu();
+	std::string printState();
 	std::string choice(int);
 	std::string cook(Drink);
 	std::string cancel();

@@ -25,17 +25,17 @@ Automata::Automata(std::string name, const std::vector<Drink>& drinks) {
 }
 std::string Automata::on() {
 	state = STATE::ON;
-	return getState();
+	return printState();
 }
 std::string Automata::off() {
 	state = STATE::OFF;
-	return getState();
+	return printState();
 }
 std::string Automata::coin(int money) {
 	cash += money;
 	return "Cash now: " + std::to_string(cash);
 }
-std::string Automata::getMenu() {
+std::string Automata::printMenu() {
 	std::string ans = "";
 	ans += this->name + ":";
 	for (size_t i = 0; i < menu.size(); i++) {
@@ -43,7 +43,7 @@ std::string Automata::getMenu() {
 	}
 	return ans;
 }
-std::string Automata::getState() {
+std::string Automata::printState() {
 	if (state == STATE::ON)
 		return this->name + " is on";
 	else

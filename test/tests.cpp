@@ -19,14 +19,14 @@ TEST(auto, correct_n)
 	Automata HSE("HSE", { Drink{"Americano", 50}, Drink{"Espresso", 60}, Drink{"Latte", 80}, Drink{"Hot chocolate", 60}, Drink{"Tea", 30}, Drink{"Water", 10} });
 	std::string res = HSE.coin(100);
 	res = HSE.choice(2);
-	EXPECT_EQ("Espresso is cooking...\nEnjoy your drink!", res);
+	EXPECT_EQ("You have chosen Espresso\nThe drink is cooking...\nEnjoy your drink!"; , res);
 }
 TEST(auto, incorrect_n)
 {
 	Automata HSE("HSE", { Drink{"Americano", 50}, Drink{"Espresso", 60}, Drink{"Latte", 80}, Drink{"Hot chocolate", 60}, Drink{"Tea", 30}, Drink{"Water", 10} });
 	std::string res = HSE.coin(100);
 	res = HSE.choice(10);
-	EXPECT_EQ("Error!", res);
+	EXPECT_EQ("Error!\nCash now: 100", res);
 }
 TEST(auto, menu)
 {
