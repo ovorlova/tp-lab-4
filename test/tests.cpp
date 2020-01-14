@@ -4,14 +4,14 @@
 TEST(auto, is_on)
 {
 	Automata c;
-	std::string res = c.getState();
+	std::string res = c.printState();
 	EXPECT_EQ("Coffee and Co. is on", res);
 }
 TEST(auto, is_off)
 {
 	Automata c;
 	c.off();
-	std::string res = c.getState();
+	std::string res = c.printState();
 	EXPECT_EQ("Coffee and Co. is off", res);
 }
 TEST(auto, correct_n)
@@ -31,6 +31,6 @@ TEST(auto, incorrect_n)
 TEST(auto, menu)
 {
 	Automata c("CheckMachine", { Drink{"Coffee", 10} });
-	std::string res = c.getMenu();
+	std::string res = c.printMenu();
 	EXPECT_EQ("CheckMachine:\n1. Coffee: 10", res);
 }
