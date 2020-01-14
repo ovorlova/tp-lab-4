@@ -3,6 +3,16 @@
 #include <vector>
 #include "auto.h"
 
+Drink::Drink() {
+	price = 0;
+	type = "";
+}
+
+Drink::Drink(std::string type_, int price_) {
+	price = price_;
+	type = type_;
+}
+
 Automata::Automata() {
 	state = STATE::ON;
 	cash = 0;
@@ -70,3 +80,4 @@ std::string Automata::finish() {
 	else
 		return cancel() + "\nHave a good day!";
 }
+

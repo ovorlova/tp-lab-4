@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
 
-class Drink {
-public:
+struct Drink {
 	std::string type;
-	int price = 0;
+	int price;
+	Drink(std::string, int);
+	Drink();
 };
 class Automata {
 private:
