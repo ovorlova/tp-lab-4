@@ -1,6 +1,7 @@
 #pragma once
 
-struct Drink {
+class Drink {
+public:
 	std::string type;
 	int price = 0;
 };
@@ -19,7 +20,7 @@ private:
 public:
 	Automata();
 	Automata(std::string);
-	Automata(std::string, const std::vector<Drink>& );
+	Automata(std::string, const std::vector<Drink>&);
 	std::string on();
 	std::string off();
 	std::string coin(int);

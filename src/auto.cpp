@@ -3,8 +3,6 @@
 #include <vector>
 #include "auto.h"
 
-#pragma once
-
 Automata::Automata() {
 	state = STATE::ON;
 	cash = 0;
