@@ -4,14 +4,14 @@
 TEST(auto, is_on)
 {
 	Automata c;
-	std::string res = c.printState();
+	std::string res = c.getState();
 	EXPECT_EQ("Coffee and Co. is on", res);
 }
 TEST(auto, is_off)
 {
 	Automata c;
 	c.off();
-	std::string res = c.printState();
+	std::string res = c.getState();
 	EXPECT_EQ("Coffee and Co. is off", res);
 }
 TEST(auto, correct_n)
@@ -19,7 +19,7 @@ TEST(auto, correct_n)
 	Automata HSE("HSE", { Drink{"Americano", 50}, Drink{"Espresso", 60}, Drink{"Latte", 80}, Drink{"Hot chocolate", 60}, Drink{"Tea", 30}, Drink{"Water", 10} });
 	std::string res = HSE.coin(100);
 	res = HSE.choice(2);
-	EXPECT_EQ("You have chosen Espresso\nThe drink is cooking...\nEnjoy your drink!"; , res);
+	EXPECT_EQ("You have chosen Espresso\nThe drink is cooking...\nEnjoy your drink!" , res);
 }
 TEST(auto, incorrect_n)
 {
@@ -31,6 +31,6 @@ TEST(auto, incorrect_n)
 TEST(auto, menu)
 {
 	Automata c("CheckMachine", { Drink{"Coffee", 10} });
-	std::string res = c.printMenu();
+	std::string res = c.getMenu();
 	EXPECT_EQ("CheckMachine:\n1. Coffee: 10", res);
 }
