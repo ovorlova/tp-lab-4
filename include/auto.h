@@ -1,17 +1,20 @@
-#pragma once
-#include <string>
+#ifndef AUTO
+#define AUTO
 
+typedef struct Drink Drink;
 struct Drink {
+	Drink();
+	Drink(std::string, int);
 	std::string type;
 	int price;
-	Drink(std::string, int);
-	Drink();
 };
 class Automata {
 private:
-	static enum class STATE {
+	enum class STATE {
 		OFF = 0,
-		ON
+		ACCEPT, 
+		WAIT, 
+		COOK,
 	};
 
 	STATE state;
@@ -22,14 +25,15 @@ private:
 public:
 	Automata();
 	Automata(std::string);
-	Automata(std::string, const std::vector<Drink>&);
+	Automata(std::string, const std::vector<Drink>& );
 	std::string on();
 	std::string off();
 	std::string coin(int);
-	std::string printMenu();
-	std::string printState();
+	std::string getMenu();
+	std::string getState();
 	std::string choice(int);
 	std::string cook(Drink);
 	std::string cancel();
 	std::string finish();
 };
+#endif
